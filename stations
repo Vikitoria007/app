@@ -1,0 +1,14 @@
+CREATE TABLE stations (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    line_id INT NOT NULL,
+    x INT NOT NULL,
+    y INT NOT NULL
+);
+
+CREATE TABLE connections (
+    station1_id INT NOT NULL REFERENCES stations(id),
+    station2_id INT NOT NULL REFERENCES stations(id),
+    travel_time INT NOT NULL,
+    isTransfer INT NOT NULL  -- 0 = обычное соединение, 1 = пересадка
+);
